@@ -1,0 +1,11 @@
+
+version: '3'
+
+services:
+
+  mongos:
+    container_name: mongos
+    image: mongo:latest
+    command: mongos --configdb config_rs/<your-ip>:10001,<your-ip>:10002,<your-ip>:10003 --port 27017
+    ports:
+      - 30000:27017

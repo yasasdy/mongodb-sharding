@@ -1,0 +1,37 @@
+
+version: '3'
+
+services:
+
+  shardsvr1_1:
+    container_name: shardsvr1_1
+    image: mongo:latest
+    command: mongod --shardsvr --replSet shard1_rs --dbpath /data/db --port 27017
+    ports:
+      - 20001:27017
+    volumes:
+      - shardsvr1_1:/data/db
+
+  shardsvr1_2:
+    container_name: shardsvr1_2
+    image: mongo:latest
+    command: mongod --shardsvr --replSet shard1_rs --dbpath /data/db --port 27017
+    ports:
+      - 20002:27017
+    volumes:
+      - shardsvr1_2:/data/db
+
+  shardsvr1_3:
+    container_name: shardsvr1_3
+    image: mongo:latest
+    command: mongod --shardsvr --replSet shard1_rs --dbpath /data/db --port 27017
+    ports:
+      - 20003:27017
+    volumes:
+      - shardsvr1_3:/data/db
+
+volumes:
+  shardsvr1_1:
+  shardsvr1_2:
+  shardsvr1_3:
+
